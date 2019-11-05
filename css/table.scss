@@ -1,0 +1,56 @@
+.tabbed-standings {
+    background: rgba(#020c26, .9);
+    border-radius: 1rem;
+    overflow: hidden;
+    &__footer {
+      @include clearfix;
+      padding: 1rem 1.5rem;
+    }
+    &__link {
+      float: left;
+      text-transform: uppercase;
+      width: 60%;
+    }
+    &__share {
+      float: right;
+      background: $white;
+      color: $twitter;
+      text-transform: uppercase;
+      width: 38%;
+      .tabbed-standings__share-twitter {
+        fill: $twitter;
+      }
+      &:hover{
+        background: $twitter;
+        color: $white;
+        .tabbed-standings__share-twitter{
+          fill: $white;
+        }
+      }
+    }
+    &__share-twitter {
+      display: inline-block;
+      margin-bottom: -.1rem;
+      margin-right: .5rem;
+      height: 1.1rem;
+      width: 1.4rem;
+    }
+  }
+  
+  @media(max-width: 940px) {
+    .tabbed-standings{
+      &__footer {
+        padding: 1rem 0;
+      }
+    }
+  }
+  
+  @media(max-width: $break-tablet) {
+    .tabbed-standings__link{
+          background: $primary-dark;
+      }
+  }
+
+.tabs {
+    width: 100%;
+}

@@ -1,0 +1,242 @@
+@mixin abridged-standings {
+
+    margin: 0;
+
+    th {
+        padding: 0 .5rem 1rem
+    }
+    td {
+        padding: .4rem;
+    }
+    td {
+        font-size: 1.3rem;
+    }
+
+    .standings-table__optional {
+        display: none;
+    }
+}
+
+.standings-table {
+    width: 100%;
+    &__highlight {
+        @include site-font-bold;
+    }
+    &__qualified {
+        @include site-font-bold;
+        color: $green;
+    }
+    &__team {
+        text-align: left;
+        white-space: nowrap;
+        a {
+            @include link-reset;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    &__team-name {
+        @include site-font-bold;
+        color: $black;
+        &--short {
+            display: none;
+        }
+    }
+    &__form {
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+    &__outcome {
+        display: inline-block;
+        background: $grey;
+        color: $white;
+        border-radius: .3rem;
+        margin-right: 0.1rem;
+        min-width: 1.8rem;
+        padding: 0.4rem;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &--win {
+            background: $green;
+        }
+        &--loss {
+            background: $red;
+        }
+    }
+
+    th{
+      background: $primary;
+      color: $white;
+      padding: 1rem;
+    }
+
+    td {
+        border-bottom: 1px solid rgba(255, 255, 255, .2);
+        padding: 1rem;
+        &:nth-child(n+3) {
+            text-align: center;
+        }
+    }
+
+    &--abridged {
+        color: $white;
+        margin: 0;
+        .standings-table__team-name {
+          display: none;
+          &--short {
+              display: inline;
+              color: $white;
+          }
+        }
+        .standings-table__team{
+            text-align: left;
+        }
+        th {
+            background: transparent;
+            @include site-font-regular;
+            color: $orange;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 0 .5rem 1rem;
+        }
+        td{
+            padding: .4rem;
+            text-align: center;
+        }
+        tbody {
+            display: table-row-group;
+            overflow-y: inherit;
+        }
+    }
+    &--full {
+        .standings-table__team-name {
+            font-size: 1.4rem;
+            margin-left: 0.5rem;
+        }
+        .standings-table td:nth-child(3) {
+            text-align: center;
+        }
+        tr {
+            &:nth-child(odd) {
+                background: $white;
+            }
+            &:nth-child(even) {
+                background: $grey-light;
+            }
+            &:first-child {
+                background: $primary;
+            }
+        }
+        th {
+            height: 4rem;
+            white-space: nowrap;
+        }
+    }
+}
+
+.tabbed-standings .standings-table--abridged{
+    tr{
+      &:nth-child(odd) {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      &:first-child{
+        background-color: transparent;
+      }
+    }
+}
+
+@include mq( $from: tablet ) {
+    .standings-table--abridged {
+        @include abridged-standings;
+    }
+    .standings-table--full {
+        td {
+            font-size: 1.6rem;
+        }
+        @include wrapper;
+    }
+}
+
+@include mq( $from: tablet, $until: desktop) {
+    .standings-table {
+        th:last-child,
+        td:last-child {
+            display: none;
+        }
+    }
+    .standings-table--abridged {
+        .table__logo {
+            display: none;
+        }
+    }
+}
+
+@include mq( $from: tablet, $until: wide) {
+    .standings-table--full {
+        .table__logo {
+            display: none;
+        }
+    }
+}
+
+@include mq( $until: wide ) {
+    .standings-table--full {
+        .standings-table__team-name {
+            display: none;
+            &--short {
+                display: inline;
+            }
+        }
+    }
+}
+
+@include mq( $until: tablet ) {
+    .standings-table--full {
+        @include scrolling-table;
+        $pos-width: 3.1rem;
+        $team-width: 10.3rem;
+        td, th {
+            font-size: 1.2rem;
+        }
+        td {
+            height: 4.4rem;
+        }
+        th {
+            height: 3.5rem;
+        }
+        .standings-table__freeze {
+            position: absolute;
+            background-color: inherit;
+            display: flex;
+            align-items: center;
+            &:first-child {
+                width: $pos-width;
+                min-width: auto;
+            }
+            &:nth-child( 2 ) {
+                left: $pos-width;
+                width: $team-width;
+                box-shadow: 3px 0 2px 0 rgba(192, 192, 192, 0.4);
+            }
+        }
+        .standings-table__header .standings-table__freeze:nth-child( 2 ) {
+            box-shadow: none;
+        }
+        .standings-table__padded {
+          padding-left: calc( #{$pos-width} + #{$team-width} + 1rem )!important;
+        }
+        .table__logo {
+            transform: scale(0.85);
+        }
+    }
+}
+
+@include mq( $until: phablet) {
+    .standings-table--abridged {
+        @include abridged-standings;
+    }
+}

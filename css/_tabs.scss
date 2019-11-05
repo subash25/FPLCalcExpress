@@ -1,0 +1,31 @@
+.tabs {
+	width: 100%;
+}
+
+.tablist {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+
+	> li {
+		background: $primary-dark;
+		color: $white;
+		flex: 1;
+		@include site-font-bold;
+		text-align: center;
+		line-height: 3;
+		cursor: pointer;
+
+		&.active {
+	  		background: transparent;
+		}
+	}
+}
+
+.tab-content {
+	display: none;
+
+	&.active {
+		display: block;
+	}
+}

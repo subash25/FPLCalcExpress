@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% include ./include/head %>
+    <body>
+        <% include ./include/nav %>
+        <div class="container table-responsive">
+        <hr>
+        <table class="table table-sm" border="1">
+           <form name = "form1" method="POST" action="/success">
+  <div class="form-group row">
+    <label for="gameweek" class="col-sm-2 col-form-label">Gameweek</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="gameweek" placeholder="Gameweek Number">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="mindate" class="col-sm-2 col-form-label">From Date</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="mindate" placeholder="MM-DD-YYYY">
+    </div>
+  </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">League</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="league" id="league" value="FL" checked>
+          <label class="form-check-label" for="flleague">
+            FL
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="league" id="league" value="FFPL">
+          <label class="form-check-label" for="ffplleague">
+            FFPL
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group row">
+    <div class="col-sm-2">Do you Want to fetch Captain Sub Data?</div>
+    <div class="col-sm-10">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="fetchform">
+        <label class="form-check-label" for="fetchform">
+          Fetch Form
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+        <label for="adhocTeam" class="col-sm-2 col-form-label">Select Adhoc Teams (If Any)</label>
+        <div class="col-sm-10">
+        <select multiple class="form-control" name="adhocTeam">
+          <option>Arsenal</option>
+          <option>Aston Villa</option>
+          <option>AFC Bournemouth</option>
+          <option>Brighton and Hove Albion</option>
+          <option>Burnley</option>
+          <option>Chelsea</option>
+          <option>Crystal Palace</option>
+          <option>Everton</option>
+          <option>Leicester City</option>
+          <option>Liverpool</option>
+          <option>Manchester City</option>
+          <option>Manchester United</option>
+          <option>Newcastle United</option>
+          <option>Norwich City</option>
+          <option>Sheffield United</option>
+          <option>Southampton</option>
+          <option>Tottenham Hotspur</option>
+          <option>Watford</option>
+          <option>West Ham United</option>
+          <option>Wolverhampton Wanderers</option>
+        </select>
+    </div>
+      </div>
+  <div class="form-group row">
+      <div></div>
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Load Data</button>
+    </div>
+  </div>
+</form>
+</table>
+</div>
+
+        <% include ./include/scripts %>
+        <% include ./include/footer %>
+    </body>
+</html>

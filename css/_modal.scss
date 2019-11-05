@@ -1,0 +1,83 @@
+.modal {
+    position: fixed;
+	width: 100%;
+	height: 100vh;
+	z-index: 2000;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+	visibility: hidden;
+    background: rgba(#1b396c, .8);
+
+    &__inner-wrapper {
+        transform: scale(0.9);
+        opacity: 0;
+    	backface-visibility: hidden;
+        transition: opacity 0.3s cubic-bezier(0, 0, 0.18, 0.71), transform 0.3s;
+        position: relative;
+        margin: 0 auto;
+        height: 100%;
+        padding: 2rem;
+    }
+
+    .inline-player {
+        opacity: 0;
+        transition: opacity 0.3s cubic-bezier(0, 0, 0.18, 0.71);
+    }
+
+    .close {
+        display: none;
+    }
+
+    &.open {
+        visibility: visible;
+        .modal__inner-wrapper {
+            visibility: visible;
+            transform: scale(1);
+            opacity: 1;
+        }
+        .inline-player {
+            opacity: 1;
+        }
+    }
+
+    &__close {
+        padding: 1.5rem;
+        border-radius: 50%;
+        background: $white;
+        position: absolute;
+        z-index: 210;
+        right: 1rem;
+        top: 1rem;
+        text-align: center;
+        box-shadow: 0px 1px 4px rgba($black, .2);
+        transition: box-shadow .2s ease, transform .2s ease;
+
+        .icon {
+            width: 1.7rem;
+            height: 1.7rem;
+            display: block;
+            fill: $primary;
+        }
+        @include hover {
+            box-shadow: 0px 1px 4px rgba($black, .6);
+            transform: scale(1.1);
+        }
+    }
+
+    &.close {
+        display: none;
+    }
+    @include mq($until: desktop) {
+        &__close {
+            right: 1rem;
+            top: 1rem;
+            padding: 1.1rem;
+        }
+    }
+    @include mq($until: tablet) {
+        &__inner-wrapper {
+            padding: 0;
+        }
+    }
+}

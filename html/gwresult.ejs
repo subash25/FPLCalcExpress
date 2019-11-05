@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% include ./include/head %>
+    <body>
+        <% include ./include/nav %>
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="table-responsive">
+            <table class="table table-sm" border="1" >
+                <thead align="center">
+                  <tr class="bg-info">
+                    <th scope="col">PD</th>
+                    <th scope="col">Home</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Away</th>
+                    <th scope="col">PD</th>
+                  </tr>
+                </thead>
+                <tbody align="center" class = "text-truncate">
+                  <% for(i in outputData){ %>
+                    <% if(outputData[i].homepd>=10){ %>
+                      <td class="table-success"><%=outputData[i].homepd%></td>
+                      <td align="left" class="table-success"><%=outputData[i].hometeam%></td>
+                    <%}else if(outputData[i].homepd<=-10){ %>
+                      <td class="table-danger"><%=outputData[i].homepd%></td>
+                      <td align="left" class="table-danger"><%=outputData[i].hometeam%></td>
+                    <%} else{%>
+                      <td class="table-warning"><%=outputData[i].homepd%></td>
+                      <td align="left" class="table-warning"><%=outputData[i].hometeam%></td>
+                      <%} %>
+                    <td><%=outputData[i].homepts%></td>
+                    <td><%=outputData[i].awaypts%></td>
+                    <% if(outputData[i].awaypd>=10){ %>
+                      <td align="left" class="table-success"><%=outputData[i].awayteam%></td>
+                      <td class="table-success"><%=outputData[i].awaypd%></td>
+                    <%}else if(outputData[i].awaypd<=-10){ %>
+                      <td align="left" class="table-danger"><%=outputData[i].awayteam%></td>
+                      <td class="table-danger"><%=outputData[i].awaypd%></td>
+                    <%} else{%>
+                      <td align="left" class="table-warning"><%=outputData[i].awayteam%></td>
+                      <td class="table-warning"><%=outputData[i].awaypd%></td>
+                      <%} %>
+                  </tr>
+                  <%} %>
+                  
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+        <% include ./include/scripts %>
+        <% include ./include/footer %>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% include ./include/head %>
+    <body>
+        <% include ./include/nav %>
+        <div class="container">
+            <hr>
+            <div class="row">
+                
+            <div class="table-responsive">
+            <table class="table table-sm" border="1">
+                <thead  class = "bg-info">
+                  <tr>
+                    <th  style="width: 5%">Pos</th>
+                    <th scope="col" style="width: 25%">Team</th>
+                    <th scope="col" style="width: 10%">Won</th>
+                    <th scope="col" style="width: 10%">Draw</th>
+                    <th scope="col" style="width: 10%">Lost</th>
+                    <th scope="col" style="width: 10%">PF</th>
+                    <th scope="col" style="width: 10%">PA</th>
+                    <th scope="col" style="width: 10%">GD</th>
+                    <th scope="col" style="width: 10%">Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(i in outputData){ %>
+                    <% if(i<=3){%>
+                       <tr class="table-success"> 
+                      <%}else if(i>=17){%>
+                        <tr class="table-danger">
+                           <%}%>
+                    <!-- <th scope="row"></th> -->
+                    <td><%=1+parseInt(i)%></td>
+                    <td><%=outputData[i].team%></td>
+                    <td><%=outputData[i].won%></td>
+                    <td><%=outputData[i].draw%></td>
+                    <td><%=outputData[i].lost%></td>
+                    <td><%=outputData[i].pf%></td>
+                    <td><%=outputData[i].pa%></td>
+                    <td><%=outputData[i].gd%></td>
+                    <td><%=outputData[i].points%></td>
+                  </tr>
+                  <%} %>
+                  
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+        <% include ./include/scripts %>
+        <% include ./include/footer %>
+    </body>
+</html>

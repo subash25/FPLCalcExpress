@@ -1,0 +1,55 @@
+/* Resets */
+
+* {
+	box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+*:active,
+*:focus {
+	outline: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+figure {
+	margin: 0;
+}
+
+ul, ol {
+	padding-left: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+
+	li {
+		list-style-type: none;
+	}
+}
+
+/* Global */
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	background: $body-bg;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	color: $txt-primary;
+	-webkit-text-size-adjust: 100%;
+	font-size: 1.4em;
+}
+
+// reusable element to be displayed when showing a message to the user
+.message {
+  font-size: 1.6rem;
+  margin: 1rem 0;
+}
