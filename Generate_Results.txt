@@ -1,0 +1,32 @@
+API - Run in the order.
+
+Note - Do Not run any of these when Official FPL site is down, when points are calculated nd when game is updated
+
+fetchform
+adhoc(Optional)
+loaddata
+deletedata(Optional)
+
+1a) fetchform - Variant 1
+Fetch Captain Sub data from google sheet
+https://fffleague.herokuapp.com/fetchform/FL/11/10-29-2019
+10-29-2019 -> Date from when the form has to be retrieved
+
+1b) fetchform - Variant 2
+https://fffleague.herokuapp.com/fetchform/FL/9/10-15-2019/10-22-2019/
+To retrive with start and end date
+10-15-2019-> start date
+10-22-2019-> end date (Optional- Use when the form has data for next gameweek)
+
+2) adhoc
+Optional(Use when certain team does not enter captain substitute data. To calculate points based on rules)
+https://fffleague.herokuapp.com/adhoc/FL/9/Chelsea/
+Chelsea-> Team name who did not submit captain sub data. If Team name have space in between then use '_'(underscore) in place of space(Manchester_City).
+
+3) loaddata
+Load Data for the Gameweek
+https://fffleague.herokuapp.com/loaddata/FL/11
+
+4) deletedata
+Delete Data for specific gameweek
+https://fffleague.herokuapp.com/deletedata/FL/11
