@@ -163,13 +163,14 @@ function arrUnique(arr) {
 let getFinalTeamPoints =async function (gw,league,client){
   avgTeamPointArray = [];
   console.log('3333');
-await fixtureData.getFixturesDB(league,gw,client).then(async()=>{
+
+  //await fixtureData.getFixturesDBMock(league,gw,client).then(async()=>{
   await getGWAvg.getAvgPtsURL(gw).then(data=>{
     avgPoints= data;
   }).catch(err=>{
     //console.log(err);
   });
-});//load fixtures data
+//});//load fixtures data
 
 console.log('avgPoints::'+avgPoints);
 

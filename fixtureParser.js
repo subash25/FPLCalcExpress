@@ -57,7 +57,7 @@ function checkInsertFixtureData(league,gw,client){
     .then(res=>{
         console.log(res.rows[0]);
         if(res.rows[0].count<1){
-            getFixturesAndLoad(league,gw,client);
+            //getFixturesAndLoad(league,gw,client);
             //console.log('dataloaded');
         }else{
             //client.end();
@@ -67,4 +67,26 @@ function checkInsertFixtureData(league,gw,client){
         client.end();});
 }
 
+async function getFixturesAndLoadMock (leagueName,currentGW,client){
+    fixtureURL = "https://footballapi.pulselive.com/football/fixtures?comps=1&teams=1,2,127,131,43,4,6,7,26,10,11,12,23,14,18,20,21,33,25,38&compSeasons=274&page=0&pageSize=400";
+    console.log('55555');
+    const response = await axios(fixtureURL);
+
+    //const fixtureData = response.data.content[1].gameweek.gameweek;
+    
+    console.log('test fixture data::' +response.data.content[1].teams);
+    response.data.content.map((fixtures)=>{
+        //console.log('fixture'+fixtures.gameweek.gameweek+'  current'+currentGW);
+if(parseInt(fixtures.gameweek.gameweek)===parseInt(currentGW)){
+    console.log('if satisfied');
+    console.log(`leagueName ${leagueName}`)
+    console.log(`${fixtures.teams[0].team.name}  vs ${fixtures.teams[1].team.name}`);
+    checkInsertFixtureData(leagueName, currentGW, client);
+}
+    }
+    );
+    
+}
+
 exports.getFixturesDB = getFixturesAndLoad;
+exports.getFixturesDBMock = getFixturesAndLoadMock;

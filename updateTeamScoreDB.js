@@ -88,7 +88,7 @@ let getGWResultDisplayFL = async function(client) {
      full outer join (select Gameweek, TEAM as AWAYteam, pf AWAYPTS
                                 from gwresultnew
                                where Gameweek || TEAM IN (select Gameweek || AWAYteam from fixturetable)) gi on 
-    gp.Gameweek = gi.Gameweek and gp.awayteam = gi.awayteam) final where final.gameweek = (select max(gameweek) from fixturetable)`)
+    gp.Gameweek = gi.Gameweek and gp.awayteam = gi.awayteam) final where final.gameweek = (select max(Gameweek) from gwresultnew)`)
   .then(data=> {
      result = data.rows;
   //console.log(result);

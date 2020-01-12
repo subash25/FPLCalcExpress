@@ -19,11 +19,11 @@ let deleteData = function (gameweek,league,client){
         console.log('client'+client.toString());
         let queriesExecuted = 0;
         console.log('inside deleteData')
-        client
-        .query('delete from public.fixturetable where gameweek = $1 and league = $2',
-        [gameweek,league]).then(()=>{
-            queriesExecuted = queriesExecuted+1;
-        });
+        // client
+        // .query('delete from public.fixturetable where gameweek = $1 and league = $2',
+        // [gameweek,league]).then(()=>{
+        //     queriesExecuted = queriesExecuted+1;
+        // });
         client.query('delete FROM public.gwpoints where gameweek = $1 and league = $2',
         [gameweek,league]).then(()=>{
             queriesExecuted = queriesExecuted+1;
